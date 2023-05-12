@@ -9,7 +9,7 @@ const AddPostForm = () => {
     const [toDoName, setToDoName] = useState('');
     const [toDoContent, setToDoContent] = useState('');
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch({});
 
     const onToDOChange = e => setToDoName(e.target.value)
     const onContentChange = e => setToDoContent(e.target.value)
@@ -21,7 +21,6 @@ const AddPostForm = () => {
                 id: nanoid(),
                 name: toDoName,
                 content: toDoContent,
-                done: false,
             })
         )
     }

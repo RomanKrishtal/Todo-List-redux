@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
-    {id: '1', name: 'AA', content: 'Go', done: false},
-    {id: '2', name: 'AB', content: 'do not go', done: false},
+    {id: '1', name: 'AA', content: 'Go'},
+    {id: '2', name: 'AB', content: 'do not go'},
 ]
 
 const listSlice = createSlice({
@@ -12,10 +12,12 @@ const listSlice = createSlice({
         listAdded(state, action) {
             state.push(action.payload)
         },
-        
+        listDeleted(state, action) {
+            state.filter((list) => list.id !== action.id)
+        }
     }
 })
 
-export const { listAdded } = listSlice.actions
+export const { listAdded, listDeleted } = listSlice.actions
 
 export default listSlice.reducer
