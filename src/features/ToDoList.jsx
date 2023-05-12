@@ -11,15 +11,13 @@ const ToDoList = () => {
     //     console.log(lists)
     // }
 
-    const listDeletedHandler = () => {
-        dispatch(listDeleted())
-    }
+
 
     const renderedLists = lists.map(list => (
         <article key={list.id} style={{border: "1px solid"}}>
             <h3>{list.name}</h3>
             <p>{list.content}</p>
-            <button onClick={listDeletedHandler}>Done</button>
+            <button onClick={() => dispatch(listDeleted(list.id))}>Done</button>
         </article>
     ))
     return(
