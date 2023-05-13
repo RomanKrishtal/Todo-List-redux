@@ -6,24 +6,22 @@ const ToDoList = () => {
 
     const dispatch = useDispatch();
 
-    // const listDeleted = (id) => {
-    //     lists.filter(list => id !== list.id)
-    //     console.log(lists)
-    // }
-
-
-
     const renderedLists = lists.map(list => (
         <article key={list.id} style={{border: "1px solid"}}>
             <h3>{list.name}</h3>
             <p>{list.content}</p>
-            <button onClick={() => dispatch(listDeleted(list.id))}>Done</button>
+            <label htmlFor={list.id}>Complete</label>
+            <input type="checkbox" id={list.id} />
+            <button onClick={() => dispatch(listDeleted(list.id))}>Delete</button>
         </article>
     ))
     return(
         <div>
         <h2>Things to do</h2>
+        <div className="d-flex">
         {renderedLists}
+        </div>
+        <span>Number of things: {lists.length}</span>
         </div>
     )
 }
