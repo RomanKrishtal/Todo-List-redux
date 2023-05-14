@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from "react-redux"
-import { listChecked, listDeleted } from "./toDoListSlice.jsx"
+import { listChecked, listDeleted, listSorted } from "./toDoListSlice.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Stack, Button } from "react-bootstrap";
+import { Stack, Button, ButtonGroup } from "react-bootstrap";
 
 const ToDoList = () => {
     const lists = useSelector(state => state.lists)
+    const completed = useSelector(state => state.completed)
 
     const dispatch = useDispatch();
 
@@ -24,6 +25,11 @@ const ToDoList = () => {
     return(
         <div>
         <h2>Things to do</h2>
+        <ButtonGroup aria-label="Basic example">
+            <Button variant="secondary">By readiness</Button>
+            <Button variant="secondary">By Alphabet</Button>
+            <Button variant="secondary">by Time</Button>
+    </ButtonGroup>
         <div className="d-flex">
             <Stack gap={3}>
         {renderedLists}

@@ -24,10 +24,17 @@ const listSlice = createSlice({
                     completed: !todo.completed,
                 }
             })
+        },
+        listSorted(state, action) {
+            if (state.id) {
+                return [...state].filter(() => action.payload.completed)
+            } else {
+                console.log(state.id)
+            }
         }
     }
 })
 
-export const { listAdded, listDeleted,  listChecked } = listSlice.actions
+export const { listAdded, listDeleted,  listChecked, listSorted } = listSlice.actions
 
 export default listSlice.reducer
