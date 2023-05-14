@@ -4,8 +4,11 @@ import AddPostForm from './features/AddPostForm.jsx'
 function App() {
   return (
     <>
+
     <AddPostForm />
+
     <ToDoList />
+
     </>
   )
 }
