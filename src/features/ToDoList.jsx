@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { listDeleted } from "./toDoListSlice.jsx"
+import { listChecked, listDeleted } from "./toDoListSlice.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Stack, Button } from "react-bootstrap";
 
@@ -15,7 +15,7 @@ const ToDoList = () => {
             <Stack direction="horizontal">
             <div>
             <label htmlFor={list.id}>Complete</label>
-            <input type="checkbox" id={list.id} />
+            <input type="checkbox" id={list.id} onClick={() => dispatch(listChecked(list.id))}/>
             </div>
             <Button className="ms-auto" onClick={() => dispatch(listDeleted(list.id))}>Delete</Button>
             </Stack>
