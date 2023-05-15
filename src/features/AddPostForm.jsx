@@ -22,7 +22,8 @@ const AddPostForm = () => {
                 id: nanoid(),
                 name: toDoName,
                 content: toDoContent,
-                status: false
+                completed: false,
+                date: new Date().toLocaleDateString('de-DE')
             })
         )
     }
