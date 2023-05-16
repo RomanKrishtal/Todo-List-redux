@@ -18,22 +18,14 @@ const listSlice = createSlice({
                 if (todo.id !== action.payload) {
                     return todo
                 }
-                console.log(todo.completed)
                 return {
                     ...todo,
                     completed: !todo.completed,
                 }
             })
         },
-        // listSorted(state, action) {
-        //     if (state.id) {
-        //         return [...state].filter(() => action.payload.completed)
-        //     } else {
-        //         console.log(state.id)
-        //     }
-        // },
         readyCheck(state, action) {
-            return [...state].filter((list) => list.completed)
+            return [...state].filter((list) => !list.completed)
         },
         alphabetCheck(state, action) {
             return [...state].sort((a, b) => (a > b) ? 1 : -1)
@@ -45,12 +37,24 @@ const listSlice = createSlice({
                 return dateA > dateB ? 1 : -1;
             })
         },
-        resetSort(state, action) {
-            return 
+        markCompleted(state, action) {
+            return state.map((todo) => {
+                if (!action.payload) {
+                    console.log(action.payload)
+                    return {
+                        ...todo,
+                        completed: !action.payload
+                    }
+                } else {
+                    return {
+                        ...todo
+                    }
+                }
+            })
         }
     }
 })
 
-export const { listAdded, listDeleted,  listChecked, listSorted, readyCheck, alphabetCheck, timeSort, resetSort } = listSlice.actions
+export const { listAdded, listDeleted,  listChecked, listSorted, readyCheck, alphabetCheck, timeSort, resetSort, markCompleted } = listSlice.actions
 
 export default listSlice.reducer
