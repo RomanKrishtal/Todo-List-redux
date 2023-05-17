@@ -45,9 +45,11 @@ const listSlice = createSlice({
                         ...todo,
                         completed: !action.payload
                     }
-                } else {
+                } else if (action.payload) {
+                    console.log(action.payload)
                     return {
-                        ...todo
+                        ...todo,
+                        completed: !action.payload
                     }
                 }
             })

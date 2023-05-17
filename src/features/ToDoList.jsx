@@ -3,7 +3,7 @@ import { listChecked, listDeleted, listSorted, readyCheck, alphabetCheck, timeSo
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Stack, Button, ButtonGroup } from "react-bootstrap";
 
-const ToDoList = ({completed}) => {
+const ToDoList = ({id, name, content, completed}) => {
     const lists = useSelector(state => state.lists)
 
     const dispatch = useDispatch();
@@ -19,13 +19,14 @@ const ToDoList = ({completed}) => {
             <input type="checkbox" 
             id={list.id} 
             onClick={() => dispatch(listChecked(list.id))} 
-            onChange={e => e.target.checked4}
+            onChange={e => e.target.checked}
             value={list.completed} 
             checked={list.completed ? 'checked': ''}/>
             <span>{list.date}</span>
             </div>
             <Button className="ms-auto" onClick={() => dispatch(listDeleted(list.id))}>Delete</Button>
             </Stack>
+            {/* <Button variant="secondary" onClick={() => dispatch(markCompleted(list.completed))}>Mark all completed</Button> */}
         </article>
     ))
     return(
@@ -35,7 +36,7 @@ const ToDoList = ({completed}) => {
             <Button variant="secondary" onClick={() => dispatch(readyCheck())}>Clear completed</Button>
             <Button variant="secondary" onClick={() => dispatch(alphabetCheck())}>Sort by Alphabet</Button>
             <Button variant="secondary" onClick={() => dispatch(timeSort())}>Sort by by Time</Button>
-            <Button variant="secondary" onClick={() => dispatch(markCompleted({completed}))}>Mark all completed</Button>
+            <Button variant="secondary" onClick={() => dispatch(markCompleted())}>Mark all completed</Button>
     </ButtonGroup>
         <div className="d-flex">
             <Stack gap={3}>

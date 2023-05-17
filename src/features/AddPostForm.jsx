@@ -37,11 +37,11 @@ const AddPostForm = () => {
         <div>
         <section>
             <Stack gap={3}>
-            <div>
+                <div>
             <Row>
-            <h3>Add new thing</h3>
+                <h3>Add new thing</h3>
             </Row>
-            <div style={{display: "flex", justifyContent: "center"}}>
+                <div style={{display: "flex", justifyContent: "center"}}>
             <Row>
                 <Col lg={true}>
             <div style={{display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
