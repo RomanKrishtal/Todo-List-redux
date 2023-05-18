@@ -11,12 +11,12 @@ const ToDoList = () => {
 
 
     const renderedLists = lists.map(list => (
-        <Card style={{ width: '100%' }} className="shadow-sm p-3 mb-5 bg-white rounded">
-        <article key={list.id}>
+        <Card key={list.id} style={{ width: '100%' }} className="shadow-sm p-3 mb-5 bg-white rounded">
+        <article>
         <Card.Body>
             <Card.Title>{list.name}</Card.Title>
             <Card.Text>
-            <p>{list.content}</p>
+            {list.content}
             </Card.Text>
             <Stack direction="horizontal">
             <div>
@@ -39,12 +39,14 @@ const ToDoList = () => {
     return(
         <div>
         <h2>Things to do: {lists.length}</h2>
-        <ButtonGroup aria-label="Basic example">
-            <Button variant="secondary" onClick={() => dispatch(readyCheck())}>Clear completed</Button>
-            <Button variant="secondary" onClick={() => dispatch(alphabetCheck())}>Sort by Alphabet</Button>
-            <Button variant="secondary" onClick={() => dispatch(timeSort())}>Sort by by Time</Button>
-            <Button variant="secondary" onClick={() => dispatch(markCompleted())}>Mark all completed</Button>
+
+        <ButtonGroup aria-label="Basic example" style={{display: "flex", margin: "5vh auto"}}>
+            <Button variant="primary" onClick={() => dispatch(readyCheck())}>Clear completed</Button>
+            <Button variant="primary" onClick={() => dispatch(alphabetCheck())}>Sort by Alphabet</Button>
+            <Button variant="primary" onClick={() => dispatch(timeSort())}>Sort by by Time</Button>
+            <Button variant="primary" onClick={() => dispatch(markCompleted())}>Mark all completed</Button>
     </ButtonGroup>
+    
         <div className="renderedList">
         {renderedLists}
         </div>
