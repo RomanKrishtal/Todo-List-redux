@@ -9,6 +9,8 @@ const ToDoList = () => {
 
     const dispatch = useDispatch();
 
+    const marginButtons = "12px";
+
 
     const renderedLists = lists.map(list => (
         <Card key={list.id} style={{ width: '100%' }} className="shadow-sm p-3 mb-5 bg-white rounded">
@@ -20,13 +22,14 @@ const ToDoList = () => {
             </Card.Text>
             <Stack direction="horizontal">
             <div>
-            <label htmlFor={list.id}>Complete</label>
+            <label htmlFor={list.id} style={{marginRight: "5px"}}>Complete</label>
             <input type="checkbox" 
             id={list.id} 
             onClick={() => dispatch(listChecked(list.id))} 
             onChange={e => e.target.checked}
             value={list.completed} 
-            checked={list.completed ? 'checked': ''}/>
+            checked={list.completed ? 'checked': ''}
+            style={{marginRight: "10px"}}/>
             <span>{list.date}</span>
             </div>
             
@@ -36,21 +39,26 @@ const ToDoList = () => {
         </article>
         </Card>
     ))
-    return(
-        <div>
-        <h2>Things to do: {lists.length}</h2>
 
-        <ButtonGroup aria-label="Basic example" style={{display: "flex", margin: "5vh auto"}}>
-            <Button variant="primary" onClick={() => dispatch(readyCheck())}>Clear completed</Button>
-            <Button variant="primary" onClick={() => dispatch(alphabetCheck())}>Sort by Alphabet</Button>
-            <Button variant="primary" onClick={() => dispatch(timeSort())}>Sort by by Time</Button>
-            <Button variant="primary" onClick={() => dispatch(markCompleted())}>Mark all completed</Button>
+    return(
+        <Card style={{padding: "10px", marginTop: "10px"}}>
+        <div>
+        <h3>Things to do: {lists.length}</h3>
+
+        <ButtonGroup aria-label="Basic example" style={{display: "flex", justifyContent: "center"}}>
+            <div style={{padding: "10px", display: "flex", justifyContent: "center", width: "100%"}}>
+            <Button style={{marginRight: marginButtons}} variant="primary" onClick={() => dispatch(readyCheck())}>Clear completed</Button>
+            <Button style={{marginRight: marginButtons}} variant="primary" onClick={() => dispatch(alphabetCheck())}>Sort by Alphabet</Button>
+            <Button style={{marginRight: marginButtons}} variant="primary" onClick={() => dispatch(timeSort())}>Sort by by Time</Button>
+            <Button style={{marginRight: "0"}} variant="primary" onClick={() => dispatch(markCompleted())}>Mark all completed</Button>
+            </div>
     </ButtonGroup>
     
         <div className="renderedList">
         {renderedLists}
         </div>
         </div>
+        </Card>
     )
 }
 
