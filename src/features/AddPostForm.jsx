@@ -32,8 +32,7 @@ const AddPostForm = () => {
 }
 
     return (
-        <Container fluid>
-
+        <Container fluid className="border" style={{padding: "10px", borderRadius: "10px"}}>
         <div>
         <section>
             <Stack gap={3}>
@@ -45,14 +44,14 @@ const AddPostForm = () => {
             <Row>
                 <Col lg={true}>
             <div style={{display: "flex", alignItems: "center", justifyContent: "space-evenly"}}>
-            <label>To do</label>
-            <textarea value={toDoName} onChange={onToDOChange} style={{border: "1px solid"}}/>
+            <label>To do:</label>
+            <input value={toDoName} onChange={onToDOChange} style={{border: "1px solid"}}/>
             </div>
             </Col>
             <Col lg={true}>
             <div style={{display: "flex", alignItems: "center"}}>
-            <label>Content</label>
-            <textarea value={toDoContent} onChange={onContentChange} />
+            <label>Content:</label>
+            <input value={toDoContent} onChange={onContentChange} />
             </div>
             </Col>
             </Row>
