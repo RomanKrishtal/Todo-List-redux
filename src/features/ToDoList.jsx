@@ -36,15 +36,18 @@ const ToDoList = () => {
         </article>
         </Card>
     ))
+
     return(
         <div>
         <h2>Things to do: {lists.length}</h2>
 
-        <ButtonGroup aria-label="Basic example" style={{display: "flex", margin: "5vh auto"}}>
+        <ButtonGroup aria-label="Basic example" style={{display: "flex", justifyContent: "center"}}>
+            <div style={{padding: "10px"}}>
             <Button variant="primary" onClick={() => dispatch(readyCheck())}>Clear completed</Button>
             <Button variant="primary" onClick={() => dispatch(alphabetCheck())}>Sort by Alphabet</Button>
             <Button variant="primary" onClick={() => dispatch(timeSort())}>Sort by by Time</Button>
             <Button variant="primary" onClick={() => dispatch(markCompleted())}>Mark all completed</Button>
+            </div>
     </ButtonGroup>
     
         <div className="renderedList">
