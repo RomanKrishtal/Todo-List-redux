@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux"
-import { listChecked, listDeleted, listSorted, readyCheck, alphabetCheck, timeSort, markCompleted } from "./toDoListSlice.jsx"
+import { listChecked, listDeleted, readyCheck, alphabetCheck, timeSort, markCompleted } from "./toDoListSlice.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Stack, Button, ButtonGroup, Card, Container } from "react-bootstrap";
+import { Stack, Button, ButtonGroup, Card } from "react-bootstrap";
 import '../App.css'
 
 const ToDoList = () => {
@@ -13,9 +13,9 @@ const ToDoList = () => {
 
 
     const renderedLists = lists.map(list => (
-        <Card key={list.id} style={{ width: '100%' }} className="shadow-sm p-3 mb-5 bg-white rounded">
+        <Card key={list.id} className={ list.completed ? "completed" :  "shadow-sm p-3 mb-5 bg-white rounded"}>
         <article>
-        <Card.Body>
+        <Card.Body style={{backgroundColor: list.completed ? "green" : "white"}}>
             <Card.Title>{list.name}</Card.Title>
             <Card.Text>
             {list.content}
@@ -53,7 +53,6 @@ const ToDoList = () => {
             <Button style={{marginRight: "0"}} variant="primary" onClick={() => dispatch(markCompleted())}>Mark all completed</Button>
             </div>
     </ButtonGroup>
-    
         <div className="renderedList">
         {renderedLists}
         </div>

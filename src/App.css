@@ -14,3 +14,12 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
+
+.completed {
+  background-color: limegreen;
+  color: white;
+}
+
+/* .renderedList:hover {
+  transform: scale(1.1);
+} */
