@@ -6,12 +6,12 @@ const Footer = () => {
             <Card.Body>
                 <div style={{display: "flex", justifyContent: "center"}}>
                 <span style={{margin: "auto"}}>
-                    <a href="https://github.com/RomanKrishtal">
+                    <a href="https://github.com/RomanKrishtal" target="_blank">
                     <img src="src/assets/icons8-github.svg"></img>
                     </a>
                 </span>
                 <span style={{margin: "auto"}}>
-                    <a href="https://www.linkedin.com/in/roman-krishtal-52a5ab20b/">
+                    <a href="https://www.linkedin.com/in/roman-krishtal-52a5ab20b/" target="_blank">
                     <img src="src/assets/icons8-linkedin.svg"></img>
                     </a>
                 </span>

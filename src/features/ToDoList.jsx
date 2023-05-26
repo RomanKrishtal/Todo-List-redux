@@ -13,9 +13,9 @@ const ToDoList = () => {
 
 
     const renderedLists = lists.map(list => (
-        <Card key={list.id} className={ list.completed ? "completed" :  "shadow-sm p-3 mb-5 bg-white rounded"}>
+        <Card key={list.id} className={ list.completed ? "completed rounded shadow-sm p-3 mb-5" :  "shadow-sm p-3 mb-5 bg-white rounded"}>
         <article>
-        <Card.Body style={{backgroundColor: list.completed ? "green" : "white"}}>
+        <Card.Body>
             <Card.Title>{list.name}</Card.Title>
             <Card.Text>
             {list.content}
