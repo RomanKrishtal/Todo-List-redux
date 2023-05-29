@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const listSlice = createSlice({
     name: 'lists',
     initialState: [
-        {id: '1', name: 'AA', content: 'Go', completed: false, date: new Date().toLocaleDateString('de-DE')},
-        {id: '2', name: 'AB', content: 'do not go', completed: false, date: new Date().toLocaleDateString('de-DE')},
+        {id: '1', name: 'aa', content: 'Go', completed: false, date: new Date().toLocaleDateString('de-DE')},
+        {id: '2', name: 'ab', content: 'do not go', completed: false, date: new Date().toLocaleDateString('de-DE')},
     ],
     reducers: {
         listAdded(state, action) {
@@ -24,14 +24,15 @@ const listSlice = createSlice({
                 }
             })
         },
-        readyCheck(state, action) {
+        readyCheck(state) {
             return [...state].filter((list) => !list.completed)
         },
-        alphabetCheck(state, action) {
-            return [...state].sort((a, b) => (a > b) ? 1 : -1)
+        alphabetCheck(state) {
+            const sortByName = key => (a, b) => a[key].toLowerCase() > b[key].toLowerCase() ? 1 : -1;
+            return state.slice().sort(sortByName('name'))
         },
-        timeSort(state, action) {
-            return [...state].sort((a, b) => {
+        timeSort(state) {
+            return state.slice().sort((a, b) => {
                 let dateA = a.date;
                 let dateB = b.date;
                 return dateA > dateB ? 1 : -1;
@@ -39,17 +40,17 @@ const listSlice = createSlice({
         },
         markCompleted(state, action) {
             return state.map((todo) => {
-                if (!action.payload) {
-                    console.log(action.payload)
+                if (!todo.completed) {
+                    console.log(todo.completed)
                     return {
                         ...todo,
-                        completed: !action.payload
+                        completed: !todo.completed
                     }
-                } else if (action.payload) {
-                    console.log(action.payload)
+                } else {
+                    console.log(todo.completed)
                     return {
                         ...todo,
-                        completed: !action.payload
+                        completed: !todo.completed
                     }
                 }
             })
@@ -57,6 +58,14 @@ const listSlice = createSlice({
     }
 })
 
-export const { listAdded, listDeleted,  listChecked, listSorted, readyCheck, alphabetCheck, timeSort, resetSort, markCompleted } = listSlice.actions
+export const { listAdded, 
+                listDeleted,  
+                listChecked, 
+                listSorted, 
+                readyCheck, 
+                alphabetCheck, 
+                timeSort, 
+                resetSort, 
+                markCompleted } = listSlice.actions
 
 export default listSlice.reducer
