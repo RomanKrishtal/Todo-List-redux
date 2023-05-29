@@ -24,14 +24,14 @@ const listSlice = createSlice({
                 }
             })
         },
-        readyCheck(state, action) {
+        readyCheck(state) {
             return [...state].filter((list) => !list.completed)
         },
-        alphabetCheck(state, action) {
+        alphabetCheck(state) {
             const sortByName = key => (a, b) => a[key].toLowerCase() > b[key].toLowerCase() ? 1 : -1;
             return state.slice().sort(sortByName('name'))
         },
-        timeSort(state, action) {
+        timeSort(state) {
             return state.slice().sort((a, b) => {
                 let dateA = a.date;
                 let dateB = b.date;
@@ -40,17 +40,17 @@ const listSlice = createSlice({
         },
         markCompleted(state, action) {
             return state.map((todo) => {
-                if (!action.payload) {
-                    console.log(action.payload)
+                if (!todo.completed) {
+                    console.log(todo.completed)
                     return {
                         ...todo,
-                        completed: !action.payload
+                        completed: !todo.completed
                     }
-                } else if (action.payload) {
-                    console.log(action.payload)
+                } else {
+                    console.log(todo.completed)
                     return {
                         ...todo,
-                        completed: !action.payload
+                        completed: !todo.completed
                     }
                 }
             })

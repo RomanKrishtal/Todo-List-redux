@@ -18,6 +18,12 @@ body {
 .completed {
   background-color: #28a745;
   color: white;
+  transition-property: transform;
+  transition-duration: 5s;
+}
+
+.completed:hover {
+  transform: scale(1.03);
 }
 
 /* .renderedList:hover {
