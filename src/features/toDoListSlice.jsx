@@ -38,7 +38,7 @@ const listSlice = createSlice({
                 return dateA > dateB ? 1 : -1;
             })
         },
-        markCompleted(state, action) {
+        markCompleted(state) {
             return state.map((todo) => {
                 if (!todo.completed) {
                     console.log(todo.completed)
