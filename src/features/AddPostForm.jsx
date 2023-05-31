@@ -33,7 +33,7 @@ const AddPostForm = () => {
 
     return (
         <Container fluid className="border" style={{padding: "10px", borderRadius: "10px"}}>
-        <div>
+        <div className="bg-gray-300">
         <section>
             <Stack gap={3}>
                 <div>
@@ -58,7 +58,7 @@ const AddPostForm = () => {
             </div>
             
             </div>
-            <Row className="text-center">
+            <Row className="text-center from-indigo-100">
                 <Col>
             <Button onClick={onSaveClick}>Add New Action</Button>
             </Col>
