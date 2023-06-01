@@ -8,7 +8,7 @@ const ToDoList = () => {
     const lists = useSelector(state => state.lists)
     const completed = useSelector(state => state.lists.completed)
 
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
     const marginButtons = "12px";
 
