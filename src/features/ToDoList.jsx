@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
+import { useEffect } from "react";
 import { listChecked, listDeleted, readyCheck, alphabetCheck, timeSort, markCompleted } from "./toDoListSlice.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Stack, Button, ButtonGroup, Card } from "react-bootstrap";
@@ -6,11 +7,14 @@ import '../App.css'
 
 const ToDoList = () => {
     const lists = useSelector(state => state.lists)
-    const completed = useSelector(state => state.lists.completed)
 
     const dispatch = useDispatch()
 
     const marginButtons = "12px";
+
+    useEffect(() => {
+        document.title = `${lists.length} left to do`
+    }, [lists.length])
 
 
     const renderedLists = lists.map(list => (
