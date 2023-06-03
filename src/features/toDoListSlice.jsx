@@ -66,6 +66,7 @@ export const { listAdded,
                 alphabetCheck, 
                 timeSort, 
                 resetSort, 
-                markCompleted } = listSlice.actions
+                markCompleted
+            } = listSlice.actions
 
 export default listSlice.reducer
