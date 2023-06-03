@@ -1,10 +1,10 @@
-const darkThemeButton = () => {
+const DarkThemeButton = () => {
     return(
         <>
-        <h1><Changed></Changed></h1>
-        <img src="src/assets/crescent-moon-svgrepo-com.svg"/>
+        <h1>A</h1>
+        {/* <img src="src/assets/crescent-moon-svgrepo-com.svg"/> */}
         </>
     )
 }
 
-export default darkThemeButton;
+export default DarkThemeButton;
