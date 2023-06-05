@@ -1,9 +1,14 @@
-.lightTheme {
+.light-theme {
     background-color: white;
     color: black;
 }
 
-.darkTheme {
+.dark-theme {
     background-color: black;
+    color: white;
+}
+
+.completed {
+    background-color: limegreen;
     color: white;
 }

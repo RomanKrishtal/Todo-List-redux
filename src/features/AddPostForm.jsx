@@ -8,12 +8,12 @@ import { useSelector } from 'react-redux'
 
 import { listAdded } from "./toDoListSlice.jsx";
 
-const AddPostForm = () => {
+const AddPostForm = ({darkTheme}) => {
     const [toDoName, setToDoName] = useState('');
     const [toDoContent, setToDoContent] = useState('');
 
     const dispatch = useDispatch();
-    let dark = useSelector(state => state.darkTheme)
+    let dark = useSelector(state => state.mode.darkTheme)
 
     const onToDOChange = e => setToDoName(e.target.value)
     const onContentChange = e => setToDoContent(e.target.value)
@@ -35,13 +35,16 @@ const AddPostForm = () => {
 }
 
     function toggleThemeHandler() {
-        dispatch(toggleTheme(dark))
+        dispatch(toggleTheme())
         console.log(dark)
     }
 
     return (
-        <Container fluid className="border" style={{padding: "10px", borderRadius: "10px"}}>
-        <div className={dark ? "darkTheme" : "lightTheme"}>
+        <Container fluid className="border" style={{padding: "10px", 
+        borderRadius: "10px", 
+        backgroundColor: dark ? "black" : "white",
+        color: !dark ? "black" : "white"}}>
+        <div>
             <div>
                 <Button onClick={toggleThemeHandler}>Dark theme</Button>
             </div>

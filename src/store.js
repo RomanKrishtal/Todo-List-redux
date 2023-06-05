@@ -5,6 +5,6 @@ import darkThemeReducer from './features/darkThemeSlice.jsx'
 export default configureStore({
     reducer: {
     lists: listReducer,
-    darkTheme: darkThemeReducer,
+    mode: darkThemeReducer,
     }
 })
