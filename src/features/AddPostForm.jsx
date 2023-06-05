@@ -1,26 +1,19 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { nanoid } from "@reduxjs/toolkit"
-import { darkThemeToggle } from "./toDoListSlice.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Row, Col, Stack } from 'react-bootstrap';
+import { toggleTheme } from './darkThemeSlice.jsx'
+import { useSelector } from 'react-redux'
 
 import { listAdded } from "./toDoListSlice.jsx";
 
 const AddPostForm = () => {
     const [toDoName, setToDoName] = useState('');
     const [toDoContent, setToDoContent] = useState('');
-    const [darkTheme, setDarkTheme] = useState('white');
-
-    function darkThemeHandler() {
-        if (darkTheme === 'white') {
-            setDarkTheme('black');
-        } else {
-        setDarkTheme('white');
-        }
-    }
 
     const dispatch = useDispatch();
+    let dark = useSelector(state => state.darkTheme)
 
     const onToDOChange = e => setToDoName(e.target.value)
     const onContentChange = e => setToDoContent(e.target.value)
@@ -41,16 +34,22 @@ const AddPostForm = () => {
     setToDoContent('')
 }
 
+    function toggleThemeHandler() {
+        dispatch(toggleTheme(dark))
+        console.log(dark)
+    }
+
     return (
-        <Container fluid className="border" style={{padding: "10px", borderRadius: "10px", backgroundColor: darkTheme, 
-        color: darkTheme ? 'black' : 'white'}}>
-        <div>
+        <Container fluid className="border" style={{padding: "10px", borderRadius: "10px"}}>
+        <div className={dark ? "darkTheme" : "lightTheme"}>
+            <div>
+                <Button onClick={toggleThemeHandler}>Dark theme</Button>
+            </div>
         <section>
             <Stack gap={3}>
                 <div>
             <Row>
                 <h3>Add new thing</h3>
-                <button onClick={darkThemeHandler}>Dark theme</button>
             </Row>
                 <div style={{display: "flex", justifyContent: "center"}}>
             <Row>
@@ -70,7 +69,7 @@ const AddPostForm = () => {
             </div>
             
             </div>
-            <Row className="text-center from-indigo-100">
+            <Row className="text-center">
                 <Col>
             <Button onClick={onSaveClick}>Add New Action</Button>
             </Col>
