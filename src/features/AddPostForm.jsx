@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { nanoid } from "@reduxjs/toolkit"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Container, Row, Col, Stack } from 'react-bootstrap';
 import { toggleTheme } from './darkThemeSlice.jsx'
 import { useSelector } from 'react-redux'
+import FormSwitch from "./FormSwitch.jsx"
+
 
 import { listAdded } from "./toDoListSlice.jsx";
 
-const AddPostForm = ({darkTheme}) => {
+const AddPostForm = () => {
     const [toDoName, setToDoName] = useState('');
     const [toDoContent, setToDoContent] = useState('');
 
@@ -36,7 +38,6 @@ const AddPostForm = ({darkTheme}) => {
 
     function toggleThemeHandler() {
         dispatch(toggleTheme())
-        console.log(dark)
     }
 
     return (
@@ -45,14 +46,16 @@ const AddPostForm = ({darkTheme}) => {
         backgroundColor: dark ? "black" : "white",
         color: !dark ? "black" : "white"}}>
         <div>
-            <div>
-                <Button onClick={toggleThemeHandler}>Dark theme</Button>
-            </div>
         <section>
             <Stack gap={3}>
                 <div>
             <Row>
-                <h3>Add new thing</h3>
+                <div style={{display: "flex", justifyContent: "center"}}>
+                <h3 style={{display: "block", marginRight: "auto"}}>Add new thing</h3>
+                <Button style={{marginLeft: "auto"}} onClick={toggleThemeHandler}>
+                    <FormSwitch />
+                </Button>
+                </div>
             </Row>
                 <div style={{display: "flex", justifyContent: "center"}}>
             <Row>

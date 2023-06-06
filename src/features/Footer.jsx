@@ -1,8 +1,10 @@
 import { Card } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const Footer = () => {
+    let dark = useSelector(state => state.mode.darkTheme)
     return(
-        <Card style={{marginTop: "10px"}}>
+        <Card style={{marginTop: "10px", backgroundColor: dark ? "black" : "white", color: !dark ? "black" : "white"}}>
             <Card.Body>
                 <div style={{display: "flex", justifyContent: "center"}}>
                 <span style={{margin: "auto"}}>

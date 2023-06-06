@@ -7,6 +7,7 @@ import '../App.css'
 
 const ToDoList = () => {
     const lists = useSelector(state => state.lists)
+    let dark = useSelector(state => state.mode.darkTheme)
 
     const dispatch = useDispatch()
 
@@ -44,9 +45,9 @@ const ToDoList = () => {
     ))
 
     return(
-        <Card style={{padding: "10px", marginTop: "10px"}}>
+        <Card style={{padding: "10px", marginTop: "10px", backgroundColor: dark ? "black" : "white"}}>
         <div>
-        <h3>Things to do: {lists.length}</h3>
+        <h3 style={{color: !dark ? "black" : "white"}}>Things to do: {lists.length}</h3>
 
         <ButtonGroup aria-label="Basic example" style={{display: "flex", justifyContent: "center"}}>
             <div style={{padding: "10px", display: "flex", justifyContent: "center", width: "100%"}}>
